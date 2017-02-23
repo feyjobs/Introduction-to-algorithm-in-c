@@ -5,7 +5,7 @@
 int main() {
     int array[MAXSIZE];
     int size = getArray(array);
-    insertSort(array,size);
+    quickSort(array,0,size-1);
     printArray(array,size);
 }
 

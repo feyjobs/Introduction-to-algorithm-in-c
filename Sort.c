@@ -1,0 +1,44 @@
+/**
+ *插入排序
+ */
+void insertSort(int* array, int size) {
+    int temp,j,i;
+    for(i = 1;i < size;i++) {
+        temp = array[i];
+        for(j = i-1;i >= 0;j--) {
+            if(array[j] > temp) {
+                array[j+1] = array[j];
+            }else {
+                break;
+            }
+        }
+        array[j+1] = temp;
+    }
+}
+/**
+ *快速排序
+ */
+void quickSort(int* array,int low, int high) {
+    if(low < high) {
+        int mid = pivot(array, low, high);
+        quickSort(array, low, mid);
+        quickSort(array, mid+1, high);
+    }
+}
+
+int pivot(int* array, int low, int high) {
+     int key = array[low];
+     int temp;
+     int i = low,j = low+1;
+     for(;j <= high;j++) {
+         if(array[j] < key) {
+             i++;
+            temp = array[j];
+            array[j] = array[i];
+            array[i] = temp;
+         }
+     }
+     array[low] = array[i];
+     array[i] = key;
+     return i;
+}

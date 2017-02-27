@@ -42,3 +42,36 @@ int pivot(int* array, int low, int high) {
      array[i] = key;
      return i;
 }
+/**
+ * 归并排序
+ */
+void mergeSort(int* num, int low, int high) {
+    if(low < high) {
+        int mid = (low + high) / 2;
+        mergeSort(num, low, mid);
+        mergeSort(num, mid+1, high);
+        merge(num, low, mid, high);
+    }
+}
+void merge(int* num, int low, int mid, int high) {
+    int* temp;
+    int i = low, j = mid+1,posi = 0;
+    while((i <= mid) && (j <= high)) {
+        if(num[i] >= num[j]) {
+            temp[posi++] = num[j++];
+        }else {
+            temp[posi++] = num[i++];
+        }
+    }
+    if(i <= mid) {
+        while(i <= mid)
+            temp[posi++] = num[i++];
+    }
+    if(j <= high) {
+        while(i <= high)
+            temp[posi++] = num[j++];
+    }
+    for(i = low,posi = 0; i <= high; i++,posi++) {
+        num[i] = temp[posi];
+    }
+}

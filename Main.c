@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include "Sort.h"
 #include "Iostream.h"
+#include "Divide_Conquer.h"
 
 int main() {
     int array[MAXSIZE];
     int size = getArray(array);
-    mergeSort(array,0,size-1);
-    printArray(array,size);
+    SubArray* ans = maxSubArray(array, 0, size-1);
+    printf("%d %d %d",ans->start,ans->end,ans->max);
 }
 

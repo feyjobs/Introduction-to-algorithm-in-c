@@ -33,7 +33,7 @@ SubArray* getMaxSubArrayByMid(int* num, int start, int end) {
     SubArray* ans = (SubArray*)malloc(sizeof(SubArray));
     for(i = mid;i >= start; i--) {
         temp += num[i];
-        if(temp >= left) {
+        if(temp >= leftMax) {
             leftMax = temp;
             left = i;
         }
@@ -41,7 +41,7 @@ SubArray* getMaxSubArrayByMid(int* num, int start, int end) {
     temp = 0;
     for(j = mid+1; j <= end;j++) {
         temp += num[j];
-        if(temp >= right) {
+        if(temp >= rightMax) {
             rightMax = temp;
             right = j;
         }

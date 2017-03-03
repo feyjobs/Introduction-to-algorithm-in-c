@@ -1,4 +1,5 @@
 #include "Divide_Conquer.h"
+#include <stdio.h>
 SubArray* maxSubArray(int* num, int start, int end) {
     if(end > start) {
         SubArray *left,*right,*midans,*max;
@@ -30,7 +31,7 @@ SubArray* getMaxSubArrayByMid(int* num, int start, int end) {
     int mid = (start + end) / 2;
     int i,j,temp = 0,left,right;
     SubArray* ans = (SubArray*)malloc(sizeof(SubArray));
-    for(i = mid;i >= start; i++) {
+    for(i = mid;i >= start; i--) {
         temp += num[i];
         if(temp >= left) {
             leftMax = temp;

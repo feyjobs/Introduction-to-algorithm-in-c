@@ -1,7 +1,6 @@
-#include <stdio.h>
 #include "Iostream.h"
 #include "Divide_Conquer.h"
-
+#include <stdio.h>
 int main() {
     int array[MAXSIZE];
     int size = getArray(array);

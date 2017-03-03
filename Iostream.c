@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "Iostream.h"
 //打印一维数组
 void printArray(int* arr,int size) {
     int i = 0;

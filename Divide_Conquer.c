@@ -1,6 +1,7 @@
+#include "Divide_Conquer.h"
 SubArray* maxSubArray(int* num, int start, int end) {
     if(end > start) {
-        SubArray* left,right,midans,max;
+        SubArray *left,*right,*midans,*max;
         int mid = (start + end) / 2;
         left = maxSubArray(num, start, mid);
         right = maxSubArray(num, mid+1, end);
@@ -11,7 +12,7 @@ SubArray* maxSubArray(int* num, int start, int end) {
         }else {
             max = right;
         }
-        if(midans->max >= max->right) {
+        if(midans->max >= max->max) {
             return midans;
         }else{
             return max;
@@ -24,7 +25,7 @@ SubArray* maxSubArray(int* num, int start, int end) {
         return ans;
     }
 }
-SubArray* getmaxSubArrayByMid(int* num, int start, int end) {
+SubArray* getMaxSubArrayByMid(int* num, int start, int end) {
     int leftMax = INT_MIN,rightMax = INT_MIN;
     int mid = (start + end) / 2;
     int i,j,temp = 0,left,right;

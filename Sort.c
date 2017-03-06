@@ -1,4 +1,5 @@
 #include "Sort.h"
+#include <stdlib.h>
 /**
  *插入排序
  */
@@ -55,7 +56,7 @@ void mergeSort(int* num, int low, int high) {
     }
 }
 void merge(int* num, int low, int mid, int high) {
-    int* temp;
+    int *temp = (int *)malloc((high-low+1)*sizeof(int));
     int i = low, j = mid+1,posi = 0;
     while((i <= mid) && (j <= high)) {
         if(num[i] >= num[j]) {
@@ -69,7 +70,7 @@ void merge(int* num, int low, int mid, int high) {
             temp[posi++] = num[i++];
     }
     if(j <= high) {
-        while(i <= high)
+        while(j <= high)
             temp[posi++] = num[j++];
     }
     for(i = low,posi = 0; i <= high; i++,posi++) {

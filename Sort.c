@@ -1,5 +1,7 @@
 #include "Sort.h"
 #include <stdlib.h>
+#include "Heap.h"
+#include "Basic.h"
 /**
  *插入排序
  */
@@ -75,5 +77,18 @@ void merge(int* num, int low, int mid, int high) {
     }
     for(i = low,posi = 0; i <= high; i++,posi++) {
         num[i] = temp[posi];
+    }
+}
+/**
+ * 堆排序
+ */
+void heapSort(int* num) {
+    Heap* heap = heapBuild(num, 0);
+    int i = heap->size;
+    for(; i > 1; i--)
+    {
+        exchange(&heap->num[1],&heap->num[i]);
+        heap->size--;
+        heapify(heap, 1);
     }
 }

@@ -8,3 +8,6 @@ typedef struct {
 }Heap;
 void heapify(Heap*, int);
 Heap* heapBuild(int*,int);
+int getHeapMax(Heap*);
+int extractHeap(Heap*);
+void heapIncreaseKey(Heap*,int,int);

@@ -3,7 +3,7 @@
 void printArray(int* arr,int size) {
     int i = 0;
     for(;i < size;i++) {
-        printf("%d ",arr[i]);
+        printf("%d \n",arr[i]);
     }
     printf("\n ");
 

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define MAXSIZE 500
+#define MAXSIZE 10000
 void printArray(int*,int);
 void printTwoDimenArray(int**,int, int);
 int getArray(int*);

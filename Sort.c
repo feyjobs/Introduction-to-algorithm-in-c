@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "Heap.h"
 #include "Basic.h"
+#include <time.h>
+#include <stdio.h> 
+#include <sys/time.h>
+#include <stdio.h>
+#include "Iostream.h"
 /**
  *插入排序
  */
@@ -31,8 +36,10 @@ void quickSort(int* array,int low, int high) {
 }
 
 int pivot(int* array, int low, int high) {
-     int key = array[low];
+     int posi = getKey(array, low, high);
+	 int key = array[posi]; 
      int temp;
+	 exchange(&array[low],&array[posi]);
      int i = low,j = low+1;
      for(;j <= high;j++) {
          if(array[j] < key) {
@@ -45,6 +52,17 @@ int pivot(int* array, int low, int high) {
      array[low] = array[i];
      array[i] = key;
      return i;
+}
+/**
+ *快排随机化
+ */ 
+int getKey(int *array, int low, int high) {
+	struct timeval time;
+	int length = high - low;
+	srand((unsigned) 100);
+	int posi = rand() % length + low;
+	return posi;
+	
 }
 /**
  * 归并排序
@@ -92,3 +110,20 @@ void heapSort(int* num) {
         heapify(heap, 1);
     }
 }
+/**
+ * 计数排序
+ */ 
+void countSort(int* num,int size,int* numAns) {
+	int count[SHORT_MAX+1] = {0};
+	int i = 0;
+	for(; i < size;i++) {
+		count[num[i]]++; 	
+	}	 
+	for(i = 1;i < SHORT_MAX+1;i++ ) {
+		count[i] = count[i] + count[i-1];
+	}
+	for(i = 0; i < size-1; i++ ) {
+		numAns[--count[num[i]]] = num[i];
+	}
+}
+

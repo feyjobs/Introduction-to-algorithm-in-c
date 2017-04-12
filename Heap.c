@@ -4,6 +4,7 @@
 #include "Basic.h"
 #include "Heap.h"
 #include <stdlib.h>
+#include <limits.h>
 
 void heapify(Heap* heap, int posi) {
     int left = posi*2;
@@ -55,5 +56,30 @@ void heapIncreaseKey(Heap* heap,int posi, int key) {
     {
         exchange(&heap->num[posi],&heap->num[posi/2]);
         posi = posi/2;
+    }
+}
+/**
+ *减小某个posi的key值,可能导致与parent冲突
+ */
+void heapDecreaseKey(Heap* heap,int posi, int key) {
+    heap->num[posi] = key;
+    while(posi > 1 && heap->num[posi] < heap->num[posi/2])
+    {
+        exchange(&heap->num[posi],&heap->num[posi/2]);
+        posi = posi/2;
+    }
+}
+void heapInsert(Heap* heap,int i) {
+    switch(heap->type) {
+        case 0:
+            heap->size++;
+            heap->num[heap->size] = INT_MIN;
+            heapIncreaseKey(heap,heap->size,i);
+            break;
+        case 1:
+            heap->size++;
+            heap->num[heap->size] = INT_MIN;
+            heapIncreaseKey(heap,heap->size,i);
+            break;
     }
 }

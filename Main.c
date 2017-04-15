@@ -5,18 +5,18 @@
 #include "Basic.h"
 #include "Heap.h"
 #include <time.h>
-#include "Stack.h"
+#include "Queue.h"
 int main() {
     int array[MAXSIZE];
     int numAns[MAXSIZE];
     int  i = 0,value = 0;
-	Stack* s = (Stack*)malloc(sizeof(Stack));
-	stackInit(s);
-    while(scanf("%d",&value) != EOF) {
-		push(s,value);
+	Queue* q = (Queue*)malloc(sizeof(Queue));
+	queueInit(q);
+    while(scanf("%d",&value) != EOF || !queueIsFull(q)) {
+		Enqueue(q,value);
     }
-	while(!isEmpty(s)) {
-		printf("%d\n",pop(s));
+	while(!queueIsEmpty(q)) {
+		printf("%d\n",Dequeue(q));
 	}
 }
 

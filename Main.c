@@ -7,8 +7,6 @@
 #include <time.h>
 #include "Queue.h"
 int main() {
-    int array[MAXSIZE];
-    int numAns[MAXSIZE];
     int  i = 0,value = 0;
 	Queue* q = (Queue*)malloc(sizeof(Queue));
 	queueInit(q);

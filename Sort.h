@@ -5,3 +5,4 @@ void mergeSort(int*, int, int); //归并排序
 void merge(int*,int,int,int);
 void heapSort(int*);             //堆排序
 void countSort(int*,int,int*);         //计数排序
+int getKey(int*,int,int);         //

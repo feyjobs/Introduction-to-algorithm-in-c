@@ -57,11 +57,10 @@ int pivot(int* array, int low, int high) {
  *快排随机化
  */ 
 int getKey(int *array, int low, int high) {
-	struct timeval time;
-	int length = high - low;
-	srand((unsigned) 100);
-	int posi = rand() % length + low;
-	return posi;
+	int mid = (low + high)/2;
+	int midValue = array[mid];		
+	
+	return mid;
 	
 }
 /**

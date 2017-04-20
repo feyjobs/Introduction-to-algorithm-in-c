@@ -8,5 +8,9 @@ typedef struct {
 	Node* head;
 }LinkedList;
 void linkedlistInit(Node*);
-void insertLinkedList(Node*,int);
+void insertLinkedList(Node*,int,int);
 int searchPosi(Node*,int value);
+int searchValue(LinkedList*,int);
+void deleteValue(LinkedList*,int);
+int deletePosi(LinkedList*,int);
+

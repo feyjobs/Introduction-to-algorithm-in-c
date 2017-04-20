@@ -9,16 +9,21 @@ void linkedlistInit(LinkedList* linkedlist) {
 	sentinal->value = 0;
 	linkedlist->head = sentital;
 }
-void insertLinkedList(LinkedList* linkedlist,int value) {
-	Node* new = malloc(sizeof(Node));
-	new->next = linkedlist->head->next;
-	new->pre = linkedlist->head;
-	linkedlist->head->next->pre = new;
-	linkedlist->head->next = new;
-	linkedlist->size++;
-}
 void insertLinkedList(LinkedList* linkedlist,int posi,int value) {
-	if(posi)
+	if(posi > linkedlist->size+1) {
+        return 0;
+    } 
+    Node* cur = linkedlist->head;
+    while(posi != 1) {
+        cur = cur->next;
+        posi--;
+    }
+    Node* new = malloc(sizeof(Node));
+    new->next = cur->next;
+    new->pre = cur;
+    new->value = value;
+    cur->next = new;
+    new->next->pre = new;
 }
 int searchPosi(LinkedList* linkedlist, int value) {
 	int posi = 1;	
@@ -40,4 +45,34 @@ int searchValue(LinkedList* linkedlist,int posi) {
 		cur = cur->next;
 	}
 	return cur->value;
+}
+void deleteValue(LinkedList* linkedlist, int value) {
+    Node* cur = linkedlist->head->next;
+    Node* dele = NULL;
+    while(cur != linkedlist->head) {
+        if(cur->value == value) {
+            cur->pre->next = cur->next;
+            cur->next->pre = cur->pre;
+            dele = cur;
+            cur = cur->next;
+            free(dele);
+        }else{
+            cur = cur->next;
+        }
+    }
+}
+int deletePosi(LinkedList* linkedlist,int posi) {
+    if(posi > linkedlist->size) {
+        return 0;
+    }
+    Node* cur = linkedlist->head->next;
+    while(posi != 1) {
+        cur = cur->next;
+        posi--;
+    }
+    int value = cur->value;
+    cur->pre->next = cur->next;
+    cur->next->pre = cur->pre;
+    free(cur);
+    return value;
 }

@@ -1,5 +1,8 @@
 #include <stdlib.h>
 #include "BinaryTree.h"
+
+BinaryNode* getInsertNode(BinaryNode* root, int value);
+
 void initSearchBinaryTree(BinaryNode* root, int* num, int size) {
    int posi = 1;
    BinaryNode* parent = NULL;

@@ -1,4 +1,3 @@
 #include "BinaryTree.h"
-void binaryTreeInit() {
-
+void initBinaryTree(BinaryTree* tree) {
 }

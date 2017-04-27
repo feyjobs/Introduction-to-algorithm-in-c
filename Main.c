@@ -8,26 +8,36 @@
 #include "Queue.h"
 //#include "BinaryTree.h"
 #include "LinkedList.h"
+#include "Stack.h"
 //#include "SearchBinaryTree.h"
+
+
+
+
+
+
+
+
 int main() {
-    int array[20];
-    int size = getArray(array);
-    int posi = 1;
-    LinkedList* linkedlist = malloc(sizeof(LinkedList));
-    linkedlistInit(&linkedlist);
-    for(;posi <= size;posi++) {
-        insertLinkedList(linkedlist,posi,array[posi - 1]);
-    }
-    deleteValue(linkedlist, 65463);
-    insertLinkedList(linkedlist,linkedlist->size+1,65463);
-    int value = deletePosi(linkedlist,2);
-    printLinkedList(linkedlist);
-    printf("\n deleted value:%d, posi %d",value,2);
-    posi = searchPosi(linkedlist,53465);
-    value = searchValue(linkedlist,2);
-    printf("value is :%d posi is: %d",value,posi);
-    //BinaryTree* root = NULL;
-    //initSearchBinaryTree(root, array, size);
+    Queue* q = malloc(sizeof(Queue));
+    queueInit(q);
+    int i = 1;
+    int flag = 0;
+    do{
+        flag = Enqueue(q,i);
+        i++;
+    }while(flag);
+    printf("head:%d tail:%d",q->head,q->tail);
+    printf("value:%d",Dequeue(q));
+    printf("value:%d",Dequeue(q));
+    printf("value:%d",Dequeue(q));
+    printf("value:%d",Dequeue(q));
+    printf("head:%d tail:%d",q->head,q->tail);
+        flag = Enqueue(q,i);
+        flag = Enqueue(q,i);
+        flag = Enqueue(q,i);
+    printf("head:%d tail:%d",q->head,q->tail);
 
 }
+
 

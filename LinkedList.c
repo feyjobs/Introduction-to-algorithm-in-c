@@ -1,17 +1,18 @@
 #include "LinkedList.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-void linkedlistInit(LinkedList* linkedlist) {
-	linkedlist->size = 0;
-	Node* sentital = malloc(sizeof(Node));
-	sentital->next = sentinal;
+void linkedlistInit(LinkedList** linkedlist) {
+	(*linkedlist)->size = 0;
+	struct Node* sentinal = malloc(sizeof(struct Node));
+	sentinal->next = sentinal;
 	sentinal->pre = sentinal;
 	sentinal->value = 0;
-	linkedlist->head = sentital;
+	(*linkedlist)->head = sentinal;
 }
 void insertLinkedList(LinkedList* linkedlist,int posi,int value) {
 	if(posi > linkedlist->size+1) {
-        return 0;
+        return;
     } 
     Node* cur = linkedlist->head;
     while(posi != 1) {
@@ -24,6 +25,7 @@ void insertLinkedList(LinkedList* linkedlist,int posi,int value) {
     new->value = value;
     cur->next = new;
     new->next->pre = new;
+    linkedlist->size++;
 }
 int searchPosi(LinkedList* linkedlist, int value) {
 	int posi = 1;	
@@ -55,6 +57,7 @@ void deleteValue(LinkedList* linkedlist, int value) {
             cur->next->pre = cur->pre;
             dele = cur;
             cur = cur->next;
+            linkedlist->size--;
             free(dele);
         }else{
             cur = cur->next;
@@ -73,6 +76,7 @@ int deletePosi(LinkedList* linkedlist,int posi) {
     int value = cur->value;
     cur->pre->next = cur->next;
     cur->next->pre = cur->pre;
+    linkedlist->size--;
     free(cur);
     return value;
 }

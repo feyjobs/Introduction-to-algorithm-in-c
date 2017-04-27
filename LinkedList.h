@@ -1,15 +1,18 @@
-typedef struct {
+#ifndef LINKEDLIST
+#define LINKEDLIST
+typedef struct Node{
 	int value;
-	Node* pre;
-	Node* next;
+	struct Node* pre;
+	struct Node* next;
 }Node;
 typedef struct {
 	int size;
-	Node* head;
+	struct Node* head;
 }LinkedList;
-void linkedlistInit(Node*);
-void insertLinkedList(Node*,int,int);
-int searchPosi(Node*,int value);
+#endif
+void linkedlistInit(LinkedList**);
+void insertLinkedList(LinkedList*,int,int);
+int searchPosi(LinkedList*,int value);
 int searchValue(LinkedList*,int);
 void deleteValue(LinkedList*,int);
 int deletePosi(LinkedList*,int);

@@ -1,4 +1,5 @@
 #include "Iostream.h"
+#include "LinkedList.h"
 //打印一维数组
 void printArray(int* arr,int size) {
     int i = 0;
@@ -49,4 +50,15 @@ void getArrayCLRS(int* array) {
         array[0]++;
         i++;
     }
+}
+void printLinkedList(LinkedList* linkedlist) {
+    Node* cur = linkedlist->head->next;
+    int posi = 1;
+
+    while(posi <= linkedlist->size) {
+        printf("%d ",cur->value);
+        posi++;
+        cur = cur->next;
+    }
+    printf("\n");
 }

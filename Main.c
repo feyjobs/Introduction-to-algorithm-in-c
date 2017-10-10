@@ -19,6 +19,7 @@
 
 
 int main() {
+    printf("shit");return 0;
     Queue* q = malloc(sizeof(Queue));
     queueInit(q);
     int i = 1;

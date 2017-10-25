@@ -1,4 +1,5 @@
 #include "BinaryTree.h"
+#include "Iostream.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include "Stack.h"
@@ -85,19 +86,24 @@ void midOrderByStack(struct S_BitNode* tree) {
 void aftOrderByStack(struct S_BitNode* tree) {
     struct S_BitNode* cur = tree;
     Stack* s = (Stack*)malloc(sizeof(Stack)); 
+    int  posi[MAXSIZE];
+    int posiSize = 0;
     stackInit(&s);
     while(!isEmpty(s) || cur != NULL) {
         while(cur != NULL) {
-            push(s,cur);
+            push(s, cur);
             cur = cur->left;
         }
+        
         cur = top(s)->right;
-        printf("%d",s->top);
-        exit(0);
         while(cur == NULL) {
-            cur == pop(s);
-            printf("%d ", cur->value);
-            cur = top(s)->right;
+            cur = pop(s);
+            printf("%d ",cur->value);
+            if(cur == top(s)->right) {
+                cur = NULL;
+            }else{
+                cur = top(s)->right;
+            }
         }
     }
 

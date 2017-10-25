@@ -1,5 +1,4 @@
 #include "Divide_Conquer.h"
-#include <stdio.h>
 SubArray* maxSubArray(int* num, int start, int end) {
     if(end > start) {
         SubArray *left,*right,*midans,*max;

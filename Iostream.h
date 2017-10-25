@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "LinkedList.h"
+#include "BinaryTree.h"
 #define MAXSIZE 10000
 void printArray(int*,int);
 void printTwoDimenArray(int**,int, int);

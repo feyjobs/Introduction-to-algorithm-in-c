@@ -1,7 +1,6 @@
 #include "Stack.h"
-#include "Basic.h"
-void stackInit(Stack* s) {
-	s->top = 0;
+void stackInit(Stack** s) {
+	(*s)->top = 0;
 }
 int isEmpty(Stack* s) {
 	if(0 == s->top) {
@@ -10,22 +9,24 @@ int isEmpty(Stack* s) {
 		return 0;
 	}
 }
-int push(Stack* s,int value) {
+int push(Stack* s,DataType value) {
 	if(s->top == MAXSIZE-1) {
-		return -1;
+		return 0;
 	}
 	s->num[++s->top] = value;
 	return 1;
 }
-int pop(Stack* s) {
+
+DataType pop(Stack* s) {
 	if(s->top == 0) {
-		return 0;
+		return ;
 	}
 	return s->num[s->top--];
 }
-int top(Stack* s) {
+
+DataType top(Stack* s) {
 	if(s->top == 0) {
-		return -1;
+		return 0;
 	}
 	return s->num[s->top];
 }

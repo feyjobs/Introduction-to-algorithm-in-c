@@ -1,13 +1,16 @@
 #include "Basic.h"
+#include "BinaryTree.h"
 #ifndef STACK
 #define STACK
+typedef struct S_BitNode* DataType;
 typedef struct {
 	int top;
-	int num[MAXSIZE]; 
+	DataType num[MAXSIZE]; 
 }Stack;
 #endif
-int isEmpty(Stack*); 
-int push(Stack*,int);
-int pop(Stack*); 
-int top(Stack*); 
+//默认操作DataType,后续若对操作的元素有修改则修改该处
+void stackInit(Stack**); 
+int push(Stack*,DataType);
+DataType pop(Stack*); 
+DataType top(Stack*); 
 int isEmpty(Stack*); 

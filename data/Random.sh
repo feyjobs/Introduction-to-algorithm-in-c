@@ -1,8 +1,8 @@
 #!/bin/bash
 i=1
 RANDOM=$(date +%s)
-while [[ i -le 10000 ]]
+while [[ i -le 7 ]]
 do
-	echo 100
+	echo $RANDOM 
 	let "i+=1"
 done

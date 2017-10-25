@@ -16,7 +16,6 @@ void printSubArray(int* arr,int start, int end) {
         printf("%d ",arr[i]);
     }
     printf("\n ");
-
 }
 //打印二维数组
 void printTwoDimenArray(int** arr,int length, int column) {
@@ -61,4 +60,8 @@ void printLinkedList(LinkedList* linkedlist) {
         cur = cur->next;
     }
     printf("\n");
+}
+
+void printBinaryTree(struct S_BitNode* T) {
+
 }

@@ -45,3 +45,13 @@ void initArray(int* array) {
         array[i] = INT_MIN;
     }
 }
+
+int inArray(int* num, int value,int size) {
+    int i = 0;
+    while(i < size) {
+        if(num[i] == value) {
+            return 1;
+        }
+    }
+    return 0;
+}

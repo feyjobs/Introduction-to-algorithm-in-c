@@ -83,6 +83,9 @@ void midOrderByStack(struct S_BitNode* tree) {
     }
 }
 
+//相当血崩的一个算法,感谢gdb,最后情况到根节点时由于栈已经空了
+//导致top(s)->right会访问错误内存,导致程序崩溃
+//写的很丑= =
 void aftOrderByStack(struct S_BitNode* tree) {
     struct S_BitNode* cur = tree;
     Stack* s = (Stack*)malloc(sizeof(Stack)); 
@@ -99,13 +102,16 @@ void aftOrderByStack(struct S_BitNode* tree) {
         while(cur == NULL) {
             cur = pop(s);
             printf("%d ",cur->value);
-            if(cur == top(s)->right) {
-                cur = NULL;
+            if(!isEmpty(s)) {
+                if(cur == top(s)->right) {
+                    cur = NULL;
+                }else{
+                    cur = top(s)->right;
+                }
             }else{
-                cur = top(s)->right;
+                cur = NULL;
+                break;
             }
         }
     }
-
-
 }

@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "Stack.h"
+#include "Queue.h"
 //使用算法导论版数组,num[0]存size,num[i]为0表示该节点为null
 void initBinaryTreeByArr(struct S_BitNode** tree, int* num, int posi) {
     if(num[0] == 0 || num[1] == 0 || tree == NULL) {
@@ -10,7 +11,7 @@ void initBinaryTreeByArr(struct S_BitNode** tree, int* num, int posi) {
         return;
     }
     (*tree)->value = num[posi];
-    (*tree)->left=(*tree)->right=(*tree)->parent=NULL;
+    (*tree)->left=(*tree)->right=NULL;
     if(posi * 2 <= num[0] && num[posi*2] != 0) {
         struct S_BitNode* left = (struct S_BitNode*)malloc(sizeof(struct S_BitNode));
         (*tree)->left = left;
@@ -114,4 +115,24 @@ void aftOrderByStack(struct S_BitNode* tree) {
             }
         }
     }
+}
+
+void floorOrder(struct S_BitNode* tree){
+    Queue* queue = (Queue*)malloc(sizeof(Queue));     
+    struct S_BitNode* cur = cur;
+    queueInit(&queue);
+    if(tree != NULL) {
+        Enqueue(queue, tree);
+    }
+    while(!queueIsEmpty(queue)) {
+        cur = Dequeue(queue); 
+        printf("%d ",cur->value);
+        if(cur->left != NULL) {
+            Enqueue(queue, cur->left);
+        }
+        if(cur->right != NULL) {
+            Enqueue(queue, cur->right);
+        }
+    }
+
 }

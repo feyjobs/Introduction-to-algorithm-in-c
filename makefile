@@ -15,8 +15,8 @@ LinkedList.o: LinkedList.c
 	gcc -c -g  LinkedList.c
 BinaryTree.o: BinaryTree.c
 	gcc -c -g   BinaryTree.c
-SearchBinaryTree.o: SearchBinaryTree.c
-	gcc -c -g    SearchBinaryTree.c
+SearchBinaryTree.o: SearchBinaryTree.c BinaryTree.h
+	gcc -c -g    SearchBinaryTree.c BinaryTree.h
 Sort.o: Sort.c
 	gcc -c -g  Sort.c
 Divide_Conquer.o:  Divide_Conquer.c

@@ -97,32 +97,33 @@ struct S_BitNode* succerror(struct S_BitNode* node) {
 void deleNode(struct S_BitNode** tree, struct S_BitNode* node) {
     struct S_BitNode* cur;
     if(node->left == NULL) {
-        transPlant(tree, &node, node->right);
+        transPlant(tree, node, node->right);
     }else if(node->right == NULL) {
-        transPlant(tree, &node, node->left);
+        transPlant(tree, node, node->left);
     }else{
         cur = minValue(node->right);
         if(cur->parent != node) {
-            transPlant(tree, &cur, cur->right);
+            transPlant(tree, cur, cur->right);
             cur->right = node->right;
             cur->right->parent = cur;
         }
-        transPlant(tree, &node, cur);
+        transPlant(tree, node, cur);
         cur->left = node->left;
         cur->left->parent = cur;
     }
 }
 
-void transPlant(struct S_BitNode** tree, struct S_BitNode** pre, struct S_BitNode* cur) {
-    if((*pre)->parent == NULL) {
+//指针的关键是:如果要修改的是传输的指针指向的元素则可以,但是修改指针本身则不可以
+void transPlant(struct S_BitNode** tree, struct S_BitNode* pre, struct S_BitNode* cur) {
+    if((pre)->parent == NULL) {
         *tree = cur;
     }
-    if((*pre) == (*pre)->parent->left) {
-        (*pre)->parent->left = cur;
-    }else if((*pre) == (*pre)->parent->right) {
-        (*pre)->parent->right = cur;
+    if((pre) == (pre)->parent->left) {
+        (pre)->parent->left = cur;
+    }else if((pre) == (pre)->parent->right) {
+        (pre)->parent->right = cur;
     }
     if(cur != NULL) {
-        cur->parent = (*pre)->parent;        
+        cur->parent = (pre)->parent;        
     }
 }

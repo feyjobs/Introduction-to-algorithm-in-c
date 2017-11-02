@@ -12,7 +12,7 @@ int main() {
     }
     floorOrder(root);
     printf("\n");
-    deleNode(&root,getNodeByValue(root, 3));
+    deleNode(&root,getNodeByValue(root, 6));
     floorOrder(root);
     printf("\n");exit(0);
     printSubArray(num,1 ,num[0]);

@@ -1,4 +1,4 @@
-objects = Operation.o Iostream.o Stack.o Queue.o Heap.o LinkedList.o BinaryTree.o SearchBinaryTree.o Sort.o Divide_Conquer.o
+objects = Operation.o Iostream.o Stack.o Queue.o Heap.o LinkedList.o BinaryTree.o SearchBinaryTree.o Sort.o Divide_Conquer.o RBTree.o
 main: Main.c $(objects) 
 	gcc -o main Main.c $(objects)
 Basic.o: Operation.c 
@@ -21,5 +21,7 @@ Sort.o: Sort.c
 	gcc -c -g  Sort.c
 Divide_Conquer.o:  Divide_Conquer.c
 	gcc -c -g  Divide_Conquer.c
+RBTree.o: RBTree.c
+	gcc -c -g  RBTree.c
 clean:
 	rm $(objects)

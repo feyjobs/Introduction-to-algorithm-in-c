@@ -16,3 +16,5 @@ struct RB_Tree {
 void initRBTree(struct RB_Tree**);
 void insertRBTree(struct RB_Tree*, int);
 void insertFixUp(struct RB_Tree*, struct RB_BitNode*);
+void leftRotate(struct RB_Tree*, struct RB_BitNode*);
+void rightRotate(struct RB_Tree*, struct RB_BitNode*);

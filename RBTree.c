@@ -62,6 +62,95 @@ void insertRBTree(struct RB_Tree* rbt, int key) {
 /**
  *红黑树关键函数,保证插入后依旧满足红黑树条件,性质
  */ 
-void insertFixUp(struct RB_Tree* rbt, struct RB_BitNode* insertNode){
+void insertFixUp(struct RB_Tree* rbt, struct RB_BitNode* cur){
+    while(cur->parent->color == RB_COLOR_RED) {
+        if(cur->parent == cur->parent->parent->left){
+            //当前节点的父节点为其爷节点的左节点
+            if(cur->parent->parent->right->color == RB_COLOR_RED) {
+                //当前节点的叔节点为红色
+                cur->parent->color = RB_COLOR_BLACK; 
+                cur->parent->parent->right->color = RB_COLOR_BLACK;
+                cur->parent->parent->color = RB_COLOR_RED;
+                cur = cur->parent->parent;
+            }else{
+                //当前节点的叔节点为黑色
+                if(cur == cur->parent->right) {
+                    //左旋
+                    leftRotate(rbt,cur);
+                    cur = cur->left;
+                }
+                //重新着色
+                //右旋
+                cur->parent->color = RB_COLOR_BLACK;
+                cur->parent->parent->color = RB_COLOR_RED;
+                rightRotate(rbt,cur);
+            }
+        }else{
+            //当前节点的父节点为其爷节点的右节点
+            if(cur->parent->parent->left->color == RB_COLOR_RED) {
+                //当前节点的叔节点为红色
+                cur->parent->color = RB_COLOR_BLACK; 
+                cur->parent->parent->left->color = RB_COLOR_BLACK;
+                cur->parent->parent->color = RB_COLOR_RED;
+                cur = cur->parent->parent;
+            }else{
+                //当前节点的叔节点为黑色
+                if(cur == cur->parent->right) {
+                    //左旋
+                    rightRotate(rbt,cur);
+                    cur = cur->right;
+                }
+                //重新着色
+                //右旋
+                cur->parent->color = RB_COLOR_BLACK;
+                cur->parent->parent->color = RB_COLOR_RED;
+                leftRotate(rbt,cur);
+            }
+        }
+    } 
+    rbt->root->color = RB_COLOR_BLACK;
+}
 
+/**
+ *红黑树左旋函数
+ */ 
+void leftRotate(struct RB_Tree* rbt, struct RB_BitNode* node) {
+    struct RB_BitNode* rightNode = node->left;
+
+    node->right = rightNode->left;
+    if(rightNode->left != rbt->NIL) {
+        rightNode->left->parent = node;
+    }
+    rightNode->parent = node->parent;
+    if(node->parent == rbt->NIL) {
+        rbt->root = rightNode; 
+    }else if(node == node->parent->left){
+        node->parent->left = rightNode;
+    }else{
+        node->parent->right = rightNode;
+    }
+    node->parent = rightNode; 
+    rightNode->left = node;
+}
+
+/**
+ *红黑树右旋函数
+ */ 
+void rightRotate(struct RB_Tree* rbt, struct RB_BitNode* node) {
+    struct RB_BitNode* leftNode = node->left;
+
+    node->left = leftNode->right;
+    if(leftNode->right != rbt->NIL) {
+        leftNode->right->parent = node;
+    }
+    leftNode->parent = node->parent;
+    if(node->parent == rbt->NIL) {
+        rbt->root = leftNode; 
+    }else if(node == node->parent->left){
+        node->parent->left = leftNode;
+    }else{
+        node->parent->right = leftNode;
+    }
+    node->parent = leftNode; 
+    leftNode->right = node;
 }

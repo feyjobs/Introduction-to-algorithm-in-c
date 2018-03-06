@@ -12,3 +12,4 @@ Here are Sevaral algorithms and data structures implemented in C
 * JumpList
 * Hash 
 * ~~Sort(InsertSort, QuickSort, MergeSort, HeapSort, countSort)~~
+* Graph(~~Init~~,BFS,DFS,Prim,Kruskal,Hungarian,Floyd,Dijkstra)
